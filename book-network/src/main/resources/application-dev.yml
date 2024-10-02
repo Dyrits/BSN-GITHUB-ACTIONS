@@ -16,8 +16,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 465
-    username: gmail_account@gmail.com
-    password: gmail_password
+    username: gerritsdylan@gmail.com
+    password: "jthz wlwa gqib xwuz"
     properties:
       mail:
         smtp:
@@ -42,4 +42,4 @@ application:
     uploads:
       photos-output-path: ./uploads
 server:
-  port: 8088
+  port: 5080
