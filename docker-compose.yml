@@ -25,6 +25,8 @@ services:
   bsn-api:
     container_name: bsn-api
     image: bsn/bsn-api:latest
+    env_file:
+      - ./book-network/.env
     build:
       context: ./book-network
       dockerfile: Dockerfile

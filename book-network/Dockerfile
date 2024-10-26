@@ -13,7 +13,7 @@ RUN mvn clean package -DskipTests
 FROM amazoncorretto:17 AS runtime
 # Set some arguments default values which can be provided during the build process.
 ARG PROFILE=dev
-ARG APP_VERSION=1.0.5
+ARG APP_VERSION=1.0.6
 
 # Set the working directory.
 WORKDIR /app
