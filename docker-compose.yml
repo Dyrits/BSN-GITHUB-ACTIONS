@@ -24,10 +24,7 @@ services:
 
   bsn-api:
     container_name: bsn-api
-    image: bsn/bsn-api:latest
-    build:
-      context: ./book-network
-      dockerfile: Dockerfile
+    image: dyrits/bsn-api:latest
     environment:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
@@ -44,10 +41,7 @@ services:
 
   bsn-ui:
     container_name: bsn-ui
-    image: bsn/bsn-ui:latest
-    build:
-      context: ./book-network-ui
-      dockerfile: Dockerfile
+    image: dyrits/bsn-ui:latest
     ports:
       - "80:80"
     networks:

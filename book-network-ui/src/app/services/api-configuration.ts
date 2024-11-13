@@ -1,15 +1,15 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 /**
  * Global configuration
  */
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class ApiConfiguration {
-  rootUrl: string = 'http://localhost:5080/api/v1';
+  rootUrl: string = "http://localhost:5080/api/v1";
 }
 
 /**

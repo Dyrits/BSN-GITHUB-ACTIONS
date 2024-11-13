@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ActivateAccountComponent } from './activate-account.component';
+import { ActivateAccountComponent } from "./activate-account.component";
 
-describe('ActivateAccountComponent', () => {
+describe("ActivateAccountComponent", () => {
   let component: ActivateAccountComponent;
   let fixture: ComponentFixture<ActivateAccountComponent>;
 
@@ -15,7 +15,7 @@ describe('ActivateAccountComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

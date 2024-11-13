@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BookCardComponent } from './book-card.component';
+import { BookCardComponent } from "./book-card.component";
 
-describe('BookCardComponent', () => {
+describe("BookCardComponent", () => {
   let component: BookCardComponent;
   let fixture: ComponentFixture<BookCardComponent>;
 
@@ -15,7 +15,7 @@ describe('BookCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
-import {JwtHelperService} from '@auth0/angular-jwt';
+import { Injectable } from "@angular/core";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TokenService {
-
   set token(token: string) {
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
   }
 
   get token() {
-    return localStorage.getItem('token') as string;
+    return localStorage.getItem("token") as string;
   }
 
   isTokenValid() {
