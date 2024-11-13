@@ -48,7 +48,7 @@ jobs:
     build:
       needs: [compile, test]
       runs-on: ubuntu-latest
-      name: Build the BSN Backend API Docker image
+      name: Build the BSN Backend API
       steps:
         - name: Checkout the code
           uses: actions/checkout@v4
