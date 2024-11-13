@@ -37,19 +37,19 @@ jobs:
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/bsn-ui:latest,${{ secrets.DOCKERHUB_USERNAME }}/bsn-ui:${{ steps.extract_version.outputs.VERSION }}
 
     # Deploy will fail since we don't have a server to deploy to.
-    deploy:
-      needs: [build-image]
-      runs-on: ubuntu-latest
-      name: Deploy the BSN Frontend
-      steps:
-        - name: Create a deployment folder
-          run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p /app"
-        - name: Copy the docker-compose.yml file to the deployment folder
-          run: scp -oStrictHostKeyChecking=no  docker-compose.yml ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEPLOYMENT_FOLDER }}
-        - name: Deploy the BSN Frontend
-          run: |
-            ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
-            cd /app
-            docker-compose -f docker-compose.yml pull -q
-            docker-compose -f docker-compose.yml up -d
-            EOF
+#    deploy:
+#      needs: [build-image]
+#      runs-on: ubuntu-latest
+#      name: Deploy the BSN Frontend
+#      steps:
+#        - name: Create a deployment folder
+#          run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p /app"
+#        - name: Copy the docker-compose.yml file to the deployment folder
+#          run: scp -oStrictHostKeyChecking=no  docker-compose.yml ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEPLOYMENT_FOLDER }}
+#        - name: Deploy the BSN Frontend
+#          run: |
+#            ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
+#            cd /app
+#            docker-compose -f docker-compose.yml pull -q
+#            docker-compose -f docker-compose.yml up -d
+#            EOF

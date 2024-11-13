@@ -106,25 +106,25 @@ jobs:
               JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
 
     # Deploy will fail since we don't have a server to deploy to.
-    deploy:
-      needs: [build-image]
-      runs-on: ubuntu-latest
-      name: Deploy the BSN Backend API
-      steps:
-        - name: Create a deployment folder
-          run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p /app"
-        - name: Copy the docker-compose.yml file to the deployment folder
-          run: scp -oStrictHostKeyChecking=no  docker-compose.yml ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEPLOYMENT_FOLDER }}
-        - name: Set the environment variables on the remote server and deploy the BSN Backend API
-          run: |
-            ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
-            export DB_USERNAME=${{ secrets.DB_USERNAME }}
-            export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
-            export MAIL_HOSTNAME=${{ secrets.MAIL_HOSTNAME }}
-            export MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
-            export MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
-            export JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
-            cd /app
-            docker-compose -f docker-compose.yml pull -q
-            docker-compose -f docker-compose.yml up -d
-            EOF
+#    deploy:
+#      needs: [build-image]
+#      runs-on: ubuntu-latest
+#      name: Deploy the BSN Backend API
+#      steps:
+#        - name: Create a deployment folder
+#          run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p /app"
+#        - name: Copy the docker-compose.yml file to the deployment folder
+#          run: scp -oStrictHostKeyChecking=no  docker-compose.yml ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DEPLOYMENT_FOLDER }}
+#        - name: Set the environment variables on the remote server and deploy the BSN Backend API
+#          run: |
+#            ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
+#            export DB_USERNAME=${{ secrets.DB_USERNAME }}
+#            export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+#            export MAIL_HOSTNAME=${{ secrets.MAIL_HOSTNAME }}
+#            export MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
+#            export MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
+#            export JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
+#            cd /app
+#            docker-compose -f docker-compose.yml pull -q
+#            docker-compose -f docker-compose.yml up -d
+#            EOF
