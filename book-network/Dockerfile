@@ -14,10 +14,11 @@ FROM amazoncorretto:17 AS runtime
 # Set some arguments default values which can be provided during the build process.
 ARG PROFILE=dev
 ARG APP_VERSION=1.0.8
+ARG MAIL_HOSTNAME=not_provided
 ARG MAIL_USERNAME=not_provided
 ARG MAIL_PASSWORD=not_provided
-ARG POSTGRES_USER=not_provided
-ARG POSTGRES_PASSWORD=not_provided
+ARG DB_USERNAME=not_provided
+ARG DB_PASSWORD=not_provided
 
 # Set the working directory.
 WORKDIR /app
@@ -31,9 +32,10 @@ EXPOSE 5080
 ENV DB_URL=jdbc:postgresql://postgres-sql-bsn:5432/book_social_network
 ENV ACTIVE_PROFILE=${PROFILE}
 ENV JAR_VERSION=${APP_VERSION}
+ENV MAIL_HOSTNAME=${MAIL_HOSTNAME}
 ENV MAIL_USERNAME=${MAIL_USERNAME}
 ENV MAIL_PASSWORD=${MAIL_PASSWORD}
-ENV POSTGRES_USER=${POSTGRES_USER}
-ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+ENV DB_USERNAME=${DB_USERNAME}
+ENV DB_PASSWORD=${DB_PASSWORD}
 
 CMD java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} -Dspring.datasource.url=${DB_URL}  book-network-${JAR_VERSION}.jar
