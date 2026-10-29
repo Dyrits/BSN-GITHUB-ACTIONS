@@ -1,3 +1,6 @@
+import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { RouterTestingModule } from "@angular/router/testing";
+import { AppModule } from "../../app.module";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { LoginComponent } from "./login.component";
@@ -8,11 +11,16 @@ describe("LoginComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      imports: [AppModule, HttpClientTestingModule, RouterTestingModule]
     });
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    const http = TestBed.inject(HttpTestingController);
+    for (const request of http.match(() => true)) {
+      request.flush({ content: [], totalPages: 0, totalElements: 0 });
+    }
+    http.verify();
   });
 
   it("should create", () => {
