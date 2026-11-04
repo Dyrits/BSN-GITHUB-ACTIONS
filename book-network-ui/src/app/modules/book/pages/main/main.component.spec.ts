@@ -1,9 +1,10 @@
-import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { BookModule } from "../../book.module";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { MainComponent } from "./main.component";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 describe("MainComponent", () => {
   let component: MainComponent;
@@ -11,7 +12,8 @@ describe("MainComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [BookModule, HttpClientTestingModule, RouterTestingModule]
+      imports: [BookModule, RouterTestingModule],
+      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;

@@ -4,6 +4,7 @@ import { BookService } from "../../../../services/services/book.service";
 import { BorrowedBookResponse } from "../../../../services/models/borrowed-book-response";
 
 @Component({
+  standalone: false,
   selector: "app-returned-books",
   templateUrl: "./returned-books.component.html",
   styleUrls: ["./returned-books.component.scss"]

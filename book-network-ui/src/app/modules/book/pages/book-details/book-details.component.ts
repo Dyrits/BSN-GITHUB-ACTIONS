@@ -6,6 +6,7 @@ import { FeedbackService } from "../../../../services/services/feedback.service"
 import { PageResponseFeedbackResponse } from "../../../../services/models/page-response-feedback-response";
 
 @Component({
+  standalone: false,
   selector: "app-book-details",
   templateUrl: "./book-details.component.html",
   styleUrls: ["./book-details.component.scss"]

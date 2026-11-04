@@ -4,6 +4,7 @@ import { BookService } from "../../../../services/services/book.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
+  standalone: false,
   selector: "app-manage-book",
   templateUrl: "./manage-book.component.html",
   styleUrls: ["./manage-book.component.scss"]

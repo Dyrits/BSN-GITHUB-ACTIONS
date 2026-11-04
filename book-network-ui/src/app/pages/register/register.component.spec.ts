@@ -1,9 +1,10 @@
-import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppModule } from "../../app.module";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { RegisterComponent } from "./register.component";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 describe("RegisterComponent", () => {
   let component: RegisterComponent;
@@ -11,7 +12,8 @@ describe("RegisterComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule, HttpClientTestingModule, RouterTestingModule]
+      imports: [AppModule, RouterTestingModule],
+      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;

@@ -7,6 +7,7 @@ import { FeedbackRequest } from "../../../../services/models/feedback-request";
 import { FeedbackService } from "../../../../services/services/feedback.service";
 
 @Component({
+  standalone: false,
   selector: "app-borrowed-book-list",
   templateUrl: "./borrowed-book-list.component.html",
   styleUrls: ["./borrowed-book-list.component.scss"]
