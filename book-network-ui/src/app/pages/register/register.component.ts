@@ -4,6 +4,7 @@ import { AuthenticationService } from "../../services/services/authentication.se
 import { RegistrationRequest } from "../../services/models/registration-request";
 
 @Component({
+  standalone: false,
   selector: "app-register",
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.scss"]

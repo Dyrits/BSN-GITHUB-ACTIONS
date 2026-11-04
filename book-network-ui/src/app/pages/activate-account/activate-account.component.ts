@@ -4,6 +4,7 @@ import { AuthenticationService } from "../../services/services/authentication.se
 import { skipUntil } from "rxjs";
 
 @Component({
+  standalone: false,
   selector: "app-activate-account",
   templateUrl: "./activate-account.component.html",
   styleUrls: ["./activate-account.component.scss"]

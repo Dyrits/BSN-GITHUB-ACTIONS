@@ -5,6 +5,7 @@ import { BookResponse } from "../../../../services/models/book-response";
 import { Router } from "@angular/router";
 
 @Component({
+  standalone: false,
   selector: "app-book-list",
   templateUrl: "./book-list.component.html",
   styleUrls: ["./book-list.component.scss"]

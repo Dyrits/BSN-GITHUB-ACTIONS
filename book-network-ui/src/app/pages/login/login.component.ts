@@ -5,6 +5,7 @@ import { AuthenticationRequest } from "../../services/models/authentication-requ
 import { TokenService } from "../../services/token/token.service";
 
 @Component({
+  standalone: false,
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"]

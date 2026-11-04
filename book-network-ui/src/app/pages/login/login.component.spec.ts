@@ -1,9 +1,10 @@
-import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppModule } from "../../app.module";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { LoginComponent } from "./login.component";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 describe("LoginComponent", () => {
   let component: LoginComponent;
@@ -11,7 +12,8 @@ describe("LoginComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule, HttpClientTestingModule, RouterTestingModule]
+      imports: [AppModule, RouterTestingModule],
+      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     });
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
