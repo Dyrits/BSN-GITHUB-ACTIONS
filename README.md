@@ -59,3 +59,17 @@ Clean npm ci and production build pass. All 19 ChromeHeadless tests pass. Local 
 The UI npm audit drops from 92 to 27 package findings, critical 6 to 0 and high 50 to 0. Distinct advisory IDs fall from 229 to 3, with no new IDs: residual Glob, Minimatch and UUID findings remain. This is not an all-clear. Backend dependencies, Docker images and deployment behavior are not covered by this UI verification. Existing image-push workflows target ci/develop, not main, and were not invoked.
 
 Migration sources: https://angular.dev/reference/releases and https://blog.angular.dev/the-future-is-standalone-475d7edbc706 .
+
+### Scoped SockJS UUID security patch (November 9, 2026)
+
+The frontend lock now uses UUID 11.1.1 only under SockJS, which is pulled in by webpack-dev-server. No Angular, backend, workflow, Docker or application source migration is included. SockJS uses the preserved CommonJS `require('uuid').v4` API. A real loopback WebSocket echo check passes with three distinct UUIDv4-backed connections:
+
+```sh
+cd book-network-ui
+npm ci
+node scripts/sockjs-compat.cjs
+npm run build
+npm test -- --watch=false --browsers=ChromeHeadless
+```
+
+On Node 26.13.0 the baseline and candidate each pass the production build and all 19 ChromeHeadless tests. A fresh candidate install, UUID import/connection smoke and audit pass. Local npm audit changes from 21 moderate affected packages/three unique advisory IDs to 16 moderate packages/two existing advisory IDs, with no new IDs. The UUID advisory is removed; remaining findings are not cleared. Existing template, tracking and 500 kB bundle-budget warnings remain (about 793 kB initial bundle, below the unchanged 1 MB error budget). This is development-tool compatibility evidence, not real backend/auth/book-mutation or deployment verification. The existing workflows only publish images on `ci/develop`; no workflow or deployment was run by this work.
